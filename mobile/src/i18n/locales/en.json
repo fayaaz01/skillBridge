@@ -1,0 +1,13 @@
+{
+  "onboarding.chooseLanguage": "Choose your language",
+  "onboarding.languageHelp": "You can change this later in Settings.",
+  "onboarding.gpsTitle": "Enable GPS",
+  "onboarding.gpsBody": "We use your precise location to find nearby matches. You can control visibility.",
+  "onboarding.summaryTitle": "What can you provide?",
+  "onboarding.summaryBody": "Write a short summary (at least 20 characters).",
+  "onboarding.summaryPlaceholder": "e.g., I can help with calculus tutoring in Tamil and English.",
+  "onboarding.doneTitle": "All set!",
+  "onboarding.doneBody": "You can update your profile anytime in Settings.",
+  "actions.continue": "Continue",
+  "actions.finish": "Finish"
+}

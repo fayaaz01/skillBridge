@@ -1,0 +1,13 @@
+{
+  "onboarding.chooseLanguage": "अपनी भाषा चुनें",
+  "onboarding.languageHelp": "आप बाद में सेटिंग्स में बदल सकते हैं।",
+  "onboarding.gpsTitle": "GPS सक्षम करें",
+  "onboarding.gpsBody": "हम आपके पास के मैच खोजने के लिए स्थान का उपयोग करते हैं।",
+  "onboarding.summaryTitle": "आप क्या प्रदान कर सकते हैं?",
+  "onboarding.summaryBody": "संक्षेप में लिखें (कम से कम 20 अक्षर)।",
+  "onboarding.summaryPlaceholder": "जैसे, मैं हिन्दी और अंग्रेजी में कैलकुलस ट्यूशन दे सकता/सकती हूँ।",
+  "onboarding.doneTitle": "सब सेट!",
+  "onboarding.doneBody": "आप सेटिंग्स में कभी भी प्रोफ़ाइल अपडेट कर सकते हैं।",
+  "actions.continue": "जारी रखें",
+  "actions.finish": "समाप्त"
+}

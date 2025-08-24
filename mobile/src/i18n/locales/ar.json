@@ -1,0 +1,13 @@
+{
+  "onboarding.chooseLanguage": "اختر لغتك",
+  "onboarding.languageHelp": "يمكنك تغييرها لاحقًا من الإعدادات.",
+  "onboarding.gpsTitle": "تفعيل تحديد الموقع",
+  "onboarding.gpsBody": "نستخدم موقعك للعثور على مطابقات قريبة منك.",
+  "onboarding.summaryTitle": "ماذا يمكنك أن تقدّم؟",
+  "onboarding.summaryBody": "اكتب ملخصًا قصيرًا (20 حرفًا على الأقل).",
+  "onboarding.summaryPlaceholder": "مثال: أستطيع المساعدة في الرياضيات بالعربية والإنجليزية.",
+  "onboarding.doneTitle": "تم الإعداد!",
+  "onboarding.doneBody": "يمكنك تحديث ملفك الشخصي لاحقًا من الإعدادات.",
+  "actions.continue": "متابعة",
+  "actions.finish": "إنهاء"
+}
