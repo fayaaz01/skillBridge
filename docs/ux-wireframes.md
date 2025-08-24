@@ -24,7 +24,7 @@
 - Post-submit shows updated badges earned
 
 ### 6. Settings
-- Language toggle (English/Tamil)
+- Language toggle (English/Tamil/Hindi/Arabic)
 - Privacy controls: avatar visibility, data deletion
 - Offline mode: download recent feed for offline
 - Verification status

@@ -9,7 +9,7 @@ A privacy-first, agentic AI platform enabling university students to exchange ac
 - Secure in-app chat, scheduling, and calendar integration
 - Trust and reputation with ratings and badges
 - Offline sync for posting, browsing, and messaging
-- Multilingual UI (Tamil/English)
+- Multilingual UI (English/Tamil/Hindi/Arabic)
 - Privacy-first defaults and data deletion controls
 
 ### Suggested Tech Stack
