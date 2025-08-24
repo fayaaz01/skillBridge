@@ -42,6 +42,8 @@ profiles: {
   privacy: {
     showAvatar: boolean,
     showCampus: boolean,
+    showRealName: boolean,        // default false
+    showRealPhoto: boolean,       // default false
     searchable: false           // always false by design
   },
   intro?: {                     // optional intro media summary

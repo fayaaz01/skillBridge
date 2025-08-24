@@ -21,7 +21,7 @@
 
 ### Privacy Controls
 - No public directory; discovery only via matches
-- Pseudonymous profiles; real names optional
+- Pseudonymous profiles by default; real name/photo are opt-in toggles in Settings
 - User can delete account: cascade delete personal data where feasible
  - Location: precise GPS stored; shown only as approximate area to other users
  - Intros: viewable only after explicit consent approval; access is logged

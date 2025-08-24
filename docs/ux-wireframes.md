@@ -31,6 +31,7 @@
 ### 6. Settings
 - Language toggle (English/Tamil/Hindi/Arabic)
 - Privacy controls: avatar visibility, data deletion
+- Privacy: toggles for real name and real photo (default off)
 - Offline mode: download recent feed for offline
 - Trust & badges overview; manage intro and endorsements
 - Theme: Light / Dark toggle (default Dark; recommend Dark on first-run)
