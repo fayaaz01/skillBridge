@@ -5,6 +5,7 @@ import './src/i18n';
 import { useTranslation } from 'react-i18next';
 import { darkTheme, lightTheme } from './src/theme/colors';
 import { isBackendReady } from './src/config';
+import { ChatScreen } from './src/screens/ChatScreen';
 
 type Step = 'language' | 'gps' | 'summary' | 'privacy' | 'done';
 
@@ -125,7 +126,12 @@ export default function App() {
         <View style={{ gap: 16 }}>
           <Title>{t('onboarding.doneTitle')}</Title>
           <Body>{t('onboarding.doneBody')}</Body>
+          <Button label="Open Chat (Local Demo)" onPress={() => setStep('chat' as any)} />
         </View>
+      )}
+
+      {step === ('chat' as any) && (
+        <ChatScreen />
       )}
     </Container>
   );
