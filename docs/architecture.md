@@ -11,6 +11,7 @@
   - State: Redux Toolkit with Persist; encrypted storage for keys
   - i18n: i18next (English/Tamil/Hindi/Arabic)
   - Calendar: device calendar access (permissions) and optional Google OAuth for Calendar
+  - Location: mandatory GPS permission; geohash computed client-side for queries
 - Firebase
   - Auth: Email/password; optional phone OTP and TOTP 2FA
   - Firestore: Profiles, Listings, Matches, Messages, Ratings, Endorsements, Intros
@@ -18,7 +19,7 @@
   - Storage: intro media uploads (video/voice), encrypted blobs if needed
 - AI Match Service (Python, FastAPI on Cloud Run)
   - Endpoint: computeMatches, logFeedback
-  - Inputs: anonymized skills, categories, hashed location grid, availability, urgency, trust score
+  - Inputs: anonymized skills, categories, precise location (lat/lng → distance), availability, urgency, trust score
   - Outputs: ranked user/listing IDs with relevance and rationale
   - Learning: bandit feedback from accept/decline/rate
 

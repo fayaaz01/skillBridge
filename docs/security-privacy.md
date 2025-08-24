@@ -23,10 +23,12 @@
 - No public directory; discovery only via matches
 - Pseudonymous profiles; real names optional
 - User can delete account: cascade delete personal data where feasible
+ - Location: precise GPS stored; shown only as approximate area to other users
 
 ### Access Controls
 - Firestore rules: least privilege, role checks via custom claims
 - Functions as controlled gateway for AI service, media upload signing, and prekey rotation
+ - Separate location write endpoint with rate limit and permission checks
 
 ### Data Retention
 - Messages: user-controlled deletion; auto-trim older than N days (configurable)

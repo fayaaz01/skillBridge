@@ -9,7 +9,7 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 - POST `/intros:confirm` → { storagePath, durationSec } → register intro
 
 ### Listings
-- POST `/listings` → create listing
+- POST `/listings` → create listing (requires location {lat,lng})
 - PATCH `/listings/{id}` → update
 - GET `/listings` → query with filters: `category`, `type`, `language`, `urgency>=`, `near=grid`
 - GET `/listings/{id}` → fetch
@@ -22,6 +22,8 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 - POST `/matches/{id}:decline`
 
 ### Conversations & Messages
+### Location
+- POST `/profile/updateLocation` → { lat, lng } → updates precise GPS for matching
 - POST `/conversations` → { participantId, listingIds? } → { convoId }  // protocol defaults to Signal
 - GET `/conversations?me=1&orderBy=lastMessageAt desc`
 - POST `/conversations/{id}/messages` → ciphertext payload; server writes RO fields

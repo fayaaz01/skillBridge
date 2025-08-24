@@ -17,7 +17,7 @@ A privacy-first, agentic AI platform enabling university students to exchange ac
 - Backend: Firebase Auth, Firestore, Cloud Functions (Node.js)
 - AI Matching: Python (FastAPI service) + scikit-learn or TensorFlow, optionally TF Lite on-device
 - Messaging: Firestore collections with client-side E2EE
-- Location: Google Maps SDK
+- Location: Google Maps SDK (mandatory GPS)
 - Calendar: Platform Calendar APIs (iOS/Android) and Google Calendar API (OAuth)
 
 ### High-Level Architecture

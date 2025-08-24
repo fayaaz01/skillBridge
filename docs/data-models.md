@@ -22,7 +22,11 @@ profiles: {
   avatarUrl?: string,
   preferredLanguages: string[]  // e.g., ["en", "ta"]
   campus?: string,              // e.g., uni short code
-  locationGrid?: string,        // hashed geocell for locality
+  location: {                   // precise GPS, required on onboarding
+    lat: number,
+    lng: number,
+    geohash?: string
+  },
   bio?: string,
   createdAt: Timestamp (RO),
   updatedAt: Timestamp (RO),
@@ -64,7 +68,7 @@ listings: {
     slots: Array<{ day: number, start: string, end: string }>
   },
   urgency: 1 | 2 | 3 | 4 | 5,
-  locationGrid?: string,
+  location: { lat: number, lng: number, geohash?: string },
   status: "active" | "paused" | "archived",
   createdAt: Timestamp (RO),
   updatedAt: Timestamp (RO)
