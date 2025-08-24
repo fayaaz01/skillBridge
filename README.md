@@ -6,7 +6,7 @@ A privacy-first, agentic AI platform enabling university students to exchange ac
 - User authentication with student verification and optional 2FA
 - Skill offers/requests with availability, language, and urgency
 - AI matchmaking engine with agentic proactive suggestions
-- Secure in-app chat, scheduling, and calendar integration
+- Secure in-app chat (text + voice notes), scheduling, and calendar integration
 - Trust and reputation with ratings and badges
 - Offline sync for posting, browsing, and messaging
 - Multilingual UI (English/Tamil/Hindi/Arabic)
@@ -52,7 +52,7 @@ server/                  # Cloud Functions (Node.js) + AI match service (Python)
   pseudonymous display in-app by default
 
 ### Roadmap
-- v0: Auth + Listings + Basic matching + E2EE chat + Offline
+- v0: Auth + Listings + Basic matching + E2EE chat (text + voice notes) + Offline
 - v1: Agentic suggestions + Scheduling + Calendar integration
 - v2: On-device ML personalization + Badge automation
 

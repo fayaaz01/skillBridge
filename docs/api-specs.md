@@ -27,6 +27,10 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 - POST `/conversations/{id}/messages` → ciphertext payload; server writes RO fields
 - POST `/conversations/{id}:read-receipts` → { messageIds }
 
+### Media Uploads (Chat Attachments & Intros)
+- POST `/media:startUpload` → { purpose: "chat"|"intro", mimeType } → { uploadUrl, storagePath }
+- POST `/media:confirm` → { storagePath, durationSec? } → finalize; returns mediaRef
+
 ### E2EE Keys (Signal)
 - POST `/e2ee/registerBundle` → { identityKeyPub, signedPreKeyPub, signedPreKeySig, oneTimePreKeys[] }
 - POST `/e2ee/rotatePrekeys` → { signedPreKeyPub, signedPreKeySig, oneTimePreKeys[] }
