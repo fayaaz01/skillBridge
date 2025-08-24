@@ -3,12 +3,12 @@
 ### Threat Model
 - Protect message content from server and third parties (E2EE)
 - Limit metadata exposure; prevent user scraping
-- Ensure verified student community without over-collecting PII
+- Promote community safety via optional trust signals without over-collecting PII
 
-### Authentication & Verification
-- Firebase Auth with email/password; 2FA optional via TOTP
-- Student verification: domain whitelisting or document review
-- Store only minimal verification metadata in `verifications`
+### Authentication & Trust Signals
+- Firebase Auth with email/password; optional phone OTP and TOTP 2FA
+- Peer endorsements are stored with minimal metadata; visible to matched users
+- Video/voice intros stored in Firebase Storage; default visibility to matches only
 
 ### Messaging E2EE
 - Use Signal-compatible protocol or libsodium:
@@ -33,5 +33,5 @@
 
 ### Compliance
 - Consent for notifications and analytics; opt-out defaults where possible
-- Local language notifications (Tamil/English)
+- Local language notifications (English/Tamil/Hindi/Arabic)
 

@@ -27,5 +27,5 @@
 - Language toggle (English/Tamil/Hindi/Arabic)
 - Privacy controls: avatar visibility, data deletion
 - Offline mode: download recent feed for offline
-- Verification status
+- Trust & badges overview; manage intro and endorsements
 

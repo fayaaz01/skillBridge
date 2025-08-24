@@ -9,7 +9,8 @@ Notation: `?` optional, `[]` array, `RO` read-only (server-set).
 - `conversations/{convoId}/messages/{messageId}`: encrypted messages
 - `matches/{matchId}`: match suggestions and status
 - `ratings/{ratingId}`: post-exchange feedback
-- `verifications/{userId}`: student verification state
+- `endorsements/{endorsementId}`: peer endorsements
+- `intros/{introId}`: user video/voice introductions
 - `events/{eventId}`: scheduled sessions
 
 ### profiles
@@ -24,17 +25,24 @@ profiles: {
   bio?: string,
   createdAt: Timestamp (RO),
   updatedAt: Timestamp (RO),
-  verified: boolean,            // set after student verification
   trust: {
     score: number,              // 0..100
     badges: string[],           // e.g., ["reliable", "helper"]
     completedExchanges: number,
-    cancellationRate: number    // 0..1
+    cancellationRate: number,   // 0..1
+    responseTimeMsAvg?: number,
+    onTimeRate?: number         // 0..1
   },
   privacy: {
     showAvatar: boolean,
     showCampus: boolean,
     searchable: false           // always false by design
+  },
+  intro?: {                     // optional intro media summary
+    hasIntro: boolean,
+    type?: "video" | "audio",
+    mediaRef?: string,
+    durationSec?: number
   }
 }
 ```
@@ -123,15 +131,29 @@ ratings: {
 }
 ```
 
-### verifications
+### endorsements
 ```
-verifications: {
-  userId: string (RO),
-  emailDomainChecked: boolean,
-  documentUploadRef?: string,
-  status: "pending" | "approved" | "rejected",
-  reviewedAt?: Timestamp,
-  note?: string
+endorsements: {
+  endorsementId: string (RO),
+  endorserId: string,
+  endorseeId: string,
+  text?: string,
+  tags?: string[],               // e.g., ["patient", "clear"]
+  fromMatchId?: string,
+  createdAt: Timestamp (RO)
+}
+```
+
+### intros
+```
+intros: {
+  introId: string (RO),
+  userId: string,
+  type: "video" | "audio",
+  mediaRef: string,              // Firebase Storage path
+  durationSec?: number,
+  createdAt: Timestamp (RO),
+  visibility: "matches" | "private"
 }
 ```
 
@@ -157,7 +179,8 @@ events: {
 - Conversations readable only to participants; messages encrypted
 - Matches readable to involved users; created by server/AI
 - Ratings: rater can write, ratee cannot modify; aggregate trust updated via Function
-- Verifications readable only by the user and admins
+- Endorsements: endorser can create; endorsee can view; others limited
+- Intros: owner can read/write; readable to matched users if `visibility == "matches"`
 
 ## Indexing Suggestions
 - `listings`: composite on `(category, status, urgency desc, createdAt desc)`

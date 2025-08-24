@@ -2,11 +2,11 @@
 
 Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Functions callable or HTTPS endpoints; AI service behind a proxy Function.
 
-### Auth and Verification (Cloud Functions)
-- POST `/verify/start` → { method: "email" | "document" }
-  - Starts domain check or returns signed URL for upload
-- POST `/verify/complete` → { status }
-- GET `/verify/status` → { status, note }
+### Trust Signals (Cloud Functions)
+- POST `/endorsements` → { endorseeId, text?, tags? } → create endorsement
+- GET `/profiles/{id}/endorsements` → list endorsements for a user (paginated)
+- POST `/intros:startUpload` → { type } → { uploadUrl, storagePath }
+- POST `/intros:confirm` → { storagePath, durationSec } → register intro
 
 ### Listings
 - POST `/listings` → create listing

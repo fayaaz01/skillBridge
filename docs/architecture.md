@@ -9,12 +9,12 @@
 - Mobile App (React Native, Expo)
   - Screens: Dashboard, Listing, Matches, Chat, Scheduling, Ratings, Settings
   - State: Redux Toolkit with Persist; encrypted storage for keys
-  - i18n: i18next with Tamil/English
+  - i18n: i18next (English/Tamil/Hindi/Arabic)
 - Firebase
-  - Auth: Email/password + student email domain or document upload
-  - Firestore: Listings, Matches, Messages, Ratings, Profiles
-  - Cloud Functions (Node.js): student verification, notifications, scheduled jobs
-  - Storage: doc uploads (student ID), encrypted blobs if needed
+  - Auth: Email/password; optional phone OTP and TOTP 2FA
+  - Firestore: Profiles, Listings, Matches, Messages, Ratings, Endorsements, Intros
+  - Cloud Functions (Node.js): trust aggregation, notifications, media upload signing, scheduled jobs
+  - Storage: intro media uploads (video/voice), encrypted blobs if needed
 - AI Match Service (Python, FastAPI on Cloud Run)
   - Endpoint: computeMatches, logFeedback
   - Inputs: anonymized skills, categories, hashed location grid, availability, urgency, trust score
@@ -24,7 +24,7 @@
 ### Data Flow
 1. User signs in → Firebase Auth issues ID token
 2. App reads/writes to Firestore; messages are encrypted client-side
-3. Cloud Function verifies student status and sets `profile.verified=true`
+3. Optional trust enrichment: user adds intro and receives peer endorsements; trust metrics update
 4. App requests matches → Cloud Function proxies to AI service with de-identified features
 5. AI service returns ranked candidates; app stores suggestions and notifies user
 

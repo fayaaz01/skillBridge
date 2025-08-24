@@ -48,7 +48,8 @@ server/                  # Cloud Functions (Node.js) + AI match service (Python)
 ### Security & Privacy
 - Zero-knowledge E2EE chat: plaintext never leaves devices
 - Minimal data collection; no public user directory
-- Student verification required; pseudonymous display in-app by default
+- Optional trust signals (peer endorsements, video/voice intros, reliability metrics);
+  pseudonymous display in-app by default
 
 ### Roadmap
 - v0: Auth + Listings + Basic matching + E2EE chat + Offline
