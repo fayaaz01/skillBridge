@@ -10,6 +10,7 @@ A privacy-first, agentic AI platform enabling university students to exchange ac
 - Trust and reputation with ratings and badges
 - Offline sync for posting, browsing, and messaging
 - Multilingual UI (English/Tamil/Hindi/Arabic)
+- Theming: Light and Dark (Dark recommended by default)
 - Privacy-first defaults and data deletion controls
 
 ### Suggested Tech Stack

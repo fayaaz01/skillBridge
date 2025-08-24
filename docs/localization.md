@@ -40,3 +40,7 @@ Tamil/Hindi/Arabic translations mirror keys in `ta.json`, `hi.json`, and `ar.jso
 - On first launch, present a blocking modal to choose language (EN/TA/HI/AR)
 - Store selection immediately and reinitialize i18n + RTL if Arabic
 
+### Theme Preference Copy
+- Default to Dark theme; copy recommends Dark for battery and eye comfort
+- Allow user override in Settings; persist in Redux Persist
+

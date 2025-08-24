@@ -32,4 +32,5 @@
 - Privacy controls: avatar visibility, data deletion
 - Offline mode: download recent feed for offline
 - Trust & badges overview; manage intro and endorsements
+- Theme: Light / Dark toggle (default Dark; recommend Dark on first-run)
 
