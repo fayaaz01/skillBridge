@@ -41,6 +41,35 @@ app.patch('/profiles/me', requireAuth, async (req, res) => {
   res.json({ ok: true });
 });
 
+// E2EE Keys (Signal)
+app.post('/e2ee/registerBundle', requireAuth, async (req, res) => {
+  const uid = (req as any).uid as string;
+  const { identityKeyPub, signedPreKeyPub, signedPreKeySig, oneTimePreKeys, version } = req.body || {};
+  if (!identityKeyPub || !signedPreKeyPub || !signedPreKeySig || !Array.isArray(oneTimePreKeys)) {
+    return res.status(400).json({ error: { code: 'invalid-argument', message: 'invalid key bundle' } });
+  }
+  await db.collection('profiles').doc(uid).collection('keys').doc('bundle').set({ identityKeyPub, signedPreKeyPub, signedPreKeySig, oneTimePreKeys, version: version || 1, lastRotatedAt: admin.firestore.FieldValue.serverTimestamp() });
+  res.json({ ok: true });
+});
+
+app.post('/e2ee/rotatePrekeys', requireAuth, async (req, res) => {
+  const uid = (req as any).uid as string;
+  const { signedPreKeyPub, signedPreKeySig, oneTimePreKeys } = req.body || {};
+  if (!signedPreKeyPub || !signedPreKeySig || !Array.isArray(oneTimePreKeys)) {
+    return res.status(400).json({ error: { code: 'invalid-argument', message: 'invalid rotation bundle' } });
+  }
+  await db.collection('profiles').doc(uid).collection('keys').doc('bundle').set({ signedPreKeyPub, signedPreKeySig, oneTimePreKeys, lastRotatedAt: admin.firestore.FieldValue.serverTimestamp() }, { merge: true });
+  res.json({ ok: true });
+});
+
+app.get('/e2ee/getBundle', requireAuth, async (req, res) => {
+  const userId = String(req.query.userId || '');
+  if (!userId) return res.status(400).json({ error: { code: 'invalid-argument', message: 'userId required' } });
+  const snap = await db.collection('profiles').doc(userId).collection('keys').doc('bundle').get();
+  if (!snap.exists) return res.status(404).json({ error: { code: 'not-found', message: 'bundle not found' } });
+  res.json(snap.data());
+});
+
 // Listings (create minimal placeholder)
 app.post('/listings', requireAuth, async (req, res) => {
   const uid = (req as any).uid as string;
@@ -100,6 +129,16 @@ app.post('/ai/feedback', requireAuth, async (req, res) => {
     const data = await resp.json();
     if (!resp.ok) return res.status(resp.status).json(data);
     return res.json(data);
+  } catch (e: any) {
+    return res.status(502).json({ error: { code: 'ai-service-unavailable', message: String(e?.message || e) } });
+  }
+});
+
+// Proxy audio analysis to AI service
+app.post('/ai/audio/analyze', requireAuth, async (req, res) => {
+  try {
+    // Expect base64 or multipart in future; for now, reject since cloud function body parsers differ.
+    return res.status(415).json({ error: { code: 'unsupported-media-type', message: 'Use AI service direct upload for audio in this stub' } });
   } catch (e: any) {
     return res.status(502).json({ error: { code: 'ai-service-unavailable', message: String(e?.message || e) } });
   }

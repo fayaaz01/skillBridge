@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from sqlmodel import SQLModel, Session, create_engine
 from typing import List
 from math import radians, sin, cos, asin, sqrt
@@ -111,3 +111,14 @@ async def feedback(body: FeedbackPayload):
 				session.add(w)
 				session.commit()
 	return {"ok": True}
+
+
+@app.post("/audio/analyze")
+async def audio_analyze(file: UploadFile = File(...)):
+	# Placeholder: accept audio, return a simple classification-like stub
+	# In production, run on-device or server ASR and intent classification
+	filename = file.filename or "audio"
+	content_type = file.content_type or "audio/unknown"
+	# We do not store the file in this stub; read to ensure stream handled
+	await file.read()
+	return {"ok": True, "filename": filename, "contentType": content_type, "summary": "voice note received"}
