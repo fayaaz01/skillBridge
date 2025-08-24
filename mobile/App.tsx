@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { SafeAreaView, View, Text, Pressable, useColorScheme, TextInput, I18nManager } from 'react-native';
+import { SafeAreaView, View, Text, Pressable, useColorScheme, TextInput, I18nManager, Linking } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import './src/i18n';
 import { useTranslation } from 'react-i18next';
 import { darkTheme, lightTheme } from './src/theme/colors';
 
-type Step = 'language' | 'gps' | 'summary' | 'done';
+type Step = 'language' | 'gps' | 'summary' | 'privacy' | 'done';
 
 export default function App() {
   const scheme = useColorScheme();
@@ -98,7 +98,18 @@ export default function App() {
               borderColor: colors.border
             }}
           />
-          <Button label={t('actions.finish')} onPress={() => setStep('done')} disabled={!canContinueSummary} />
+          <Button label={t('actions.continue')} onPress={() => setStep('privacy')} disabled={!canContinueSummary} />
+        </View>
+      )}
+
+      {step === 'privacy' && (
+        <View style={{ gap: 16 }}>
+          <Title>{t('privacy.tldrTitle')}</Title>
+          <Body>{t('privacy.tldr')}</Body>
+          <Pressable onPress={() => Linking.openURL('https://skillbridge.app/privacy')}>
+            <Text style={{ color: colors.button }}>{t('privacy.readFull')}</Text>
+          </Pressable>
+          <Button label={t('actions.finish')} onPress={() => setStep('done')} />
         </View>
       )}
 
