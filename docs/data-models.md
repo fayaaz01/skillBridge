@@ -131,16 +131,16 @@ profiles/{userId}/keys: {
 }
 ```
 
-### ratings
+### ratings (mandatory)
 ```
 ratings: {
   ratingId: string (RO),
   raterId: string,
   rateeId: string,
   matchId: string,
-  score: 1 | 2 | 3 | 4 | 5,
-  tags: string[],               // e.g., ["on-time", "clear"]
-  comment?: string,
+  score: 1 | 2 | 3 | 4 | 5,      // required
+  tags: string[],                 // required; must contain >=1
+  comment: string,                // required; min length 10
   createdAt: Timestamp (RO)
 }
 ```

@@ -24,7 +24,7 @@
 - Scheduling proposal chip appears when time is discussed
 
 ### 5. Rating & Badges
-- 5-star with tags; optional comment
+- Mandatory: 5-star + at least one tag + comment (min 10 chars)
 - Post-submit shows updated badges earned
 
 ### 6. Settings

@@ -38,6 +38,8 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 
 ### Ratings & Trust
 - POST `/ratings` → create rating; triggers trust update
+  - Body: { matchId, rateeId, score (1..5), tags: string[], comment: string }
+  - Validation: tags.length >= 1, comment.length >= 10
 - GET `/profiles/{id}/trust` → limited public trust summary
 
 ### Scheduling
