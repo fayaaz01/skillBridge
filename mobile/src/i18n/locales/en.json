@@ -9,5 +9,8 @@
   "onboarding.doneTitle": "All set!",
   "onboarding.doneBody": "You can update your profile anytime in Settings.",
   "actions.continue": "Continue",
-  "actions.finish": "Finish"
+  "actions.finish": "Finish",
+  "privacy.tldrTitle": "Privacy (Quick Summary)",
+  "privacy.tldr": "We collect only what’s needed (account, GPS for matching, your short profile, trust signals). Messages are end‑to‑end encrypted. Real name/photo are hidden by default. Intros require consent. No data sales or ad tracking. You control settings and can delete your data.",
+  "privacy.readFull": "Read full Privacy Policy"
 }
