@@ -10,6 +10,13 @@ const AI_URL = process.env.AI_URL || 'http://localhost:8000';
 const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
+// Allow hosting rewrite to /api/** by stripping base path
+app.use((req, _res, next) => {
+  if (req.url.startsWith('/api/')) {
+    req.url = req.url.replace(/^\/api/, '');
+  }
+  next();
+});
 
 // Auth middleware
 app.use(async (req, _res, next) => {
