@@ -12,6 +12,7 @@ Notation: `?` optional, `[]` array, `RO` read-only (server-set).
 - `endorsements/{endorsementId}`: peer endorsements
 - `intros/{introId}`: user video/voice introductions
 - `events/{eventId}`: scheduled sessions
+- `profiles/{userId}/keys`: Signal prekey bundle (public)
 
 ### profiles
 ```
@@ -94,8 +95,9 @@ conversations: {
   lastMessageAt: Timestamp (RO),
   createdAt: Timestamp (RO),
   e2ee: {                       // public metadata only
-    protocol: "signal" | "sealedbox",
-    version: number
+    protocol: "signal",
+    version: number,
+    safetyNumber?: string       // optional fingerprint for user verification UI
   }
 }
 ```
@@ -114,6 +116,18 @@ conversations/{convoId}/messages: {
     deliveredAt?: Timestamp,
     readAt?: Timestamp
   }
+}
+```
+
+### keys (Signal prekey bundle)
+```
+profiles/{userId}/keys: {
+  identityKeyPub: string,          // base64
+  signedPreKeyPub: string,
+  signedPreKeySig: string,         // signature by identity key
+  oneTimePreKeys: string[],        // rotating pool
+  lastRotatedAt: Timestamp (RO),
+  version: number
 }
 ```
 
@@ -181,6 +195,7 @@ events: {
 - Ratings: rater can write, ratee cannot modify; aggregate trust updated via Function
 - Endorsements: endorser can create; endorsee can view; others limited
 - Intros: owner can read/write; readable to matched users if `visibility == "matches"`
+- Keys: `profiles/{userId}/keys` readable to authenticated users; writeable only by owner (and rotation function)
 
 ## Indexing Suggestions
 - `listings`: composite on `(category, status, urgency desc, createdAt desc)`

@@ -29,8 +29,9 @@
 5. AI service returns ranked candidates; app stores suggestions and notifies user
 
 ### Encryption Model
-- Messaging: E2EE using per-conversation double-ratchet (Signal-protocol-compatible lib) or libsodium sealed boxes
-- Keys: per-user identity keypair; per-conversation ephemeral keys stored only on devices
+- Messaging: Signal protocol (X3DH + Double Ratchet) via libsignal compatible library
+- Keys: per-user identity keypair; signed prekey + one-time prekeys published as a bundle
+- Key distribution: public prekey bundle stored at `profiles/{userId}/keys`
 - Storage: ciphertext in `messages` collection; metadata minimized (senderId, convoId, timestamp)
 
 ### Offline Strategy

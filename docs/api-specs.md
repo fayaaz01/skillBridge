@@ -22,10 +22,15 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 - POST `/matches/{id}:decline`
 
 ### Conversations & Messages
-- POST `/conversations` → { participantId, listingIds?, e2ee.protocol } → { convoId }
+- POST `/conversations` → { participantId, listingIds? } → { convoId }  // protocol defaults to Signal
 - GET `/conversations?me=1&orderBy=lastMessageAt desc`
 - POST `/conversations/{id}/messages` → ciphertext payload; server writes RO fields
 - POST `/conversations/{id}:read-receipts` → { messageIds }
+
+### E2EE Keys (Signal)
+- POST `/e2ee/registerBundle` → { identityKeyPub, signedPreKeyPub, signedPreKeySig, oneTimePreKeys[] }
+- POST `/e2ee/rotatePrekeys` → { signedPreKeyPub, signedPreKeySig, oneTimePreKeys[] }
+- GET `/e2ee/getBundle?userId=...` → returns current public bundle for initiating sessions
 
 ### Ratings & Trust
 - POST `/ratings` → create rating; triggers trust update

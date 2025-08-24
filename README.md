@@ -46,7 +46,7 @@ server/                  # Cloud Functions (Node.js) + AI match service (Python)
    - firebase emulators:start
 
 ### Security & Privacy
-- Zero-knowledge E2EE chat: plaintext never leaves devices
+- Zero-knowledge E2EE chat (Signal-compatible): plaintext never leaves devices
 - Minimal data collection; no public user directory
 - Optional trust signals (peer endorsements, video/voice intros, reliability metrics);
   pseudonymous display in-app by default
