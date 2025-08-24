@@ -22,6 +22,9 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 - POST `/matches/{id}:decline`
 
 ### Conversations & Messages
+### Profiles
+- PATCH `/profiles/me` → update profile fields
+  - Requires `shortOfferSummary` on first setup (min length 20)
 ### Location
 - POST `/profile/updateLocation` → { lat, lng } → updates precise GPS for matching
 - POST `/conversations` → { participantId, listingIds? } → { convoId }  // protocol defaults to Signal

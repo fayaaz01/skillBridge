@@ -3,6 +3,7 @@
 ### 0. Onboarding (First-run)
 - Blocking language picker: English / Tamil / Hindi / Arabic
 - Secondary screen: request GPS permission (required), notifications and calendar access (optional)
+- Profile setup: required "What I can provide" short summary (min 20 chars)
 
 ### 1. Home Dashboard (Skill Feed)
 - Sections: For You (agentic), New Nearby, Urgent Now

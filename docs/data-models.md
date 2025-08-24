@@ -29,6 +29,7 @@ profiles: {
     geohash?: string
   },
   bio?: string,
+  shortOfferSummary: string,     // required brief: what I can provide
   createdAt: Timestamp (RO),
   updatedAt: Timestamp (RO),
   trust: {
