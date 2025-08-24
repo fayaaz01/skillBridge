@@ -10,10 +10,11 @@
   - Screens: Dashboard, Listing, Matches, Chat, Scheduling, Ratings, Settings
   - State: Redux Toolkit with Persist; encrypted storage for keys
   - i18n: i18next (English/Tamil/Hindi/Arabic)
+  - Calendar: device calendar access (permissions) and optional Google OAuth for Calendar
 - Firebase
   - Auth: Email/password; optional phone OTP and TOTP 2FA
   - Firestore: Profiles, Listings, Matches, Messages, Ratings, Endorsements, Intros
-  - Cloud Functions (Node.js): trust aggregation, notifications, media upload signing, scheduled jobs
+  - Cloud Functions (Node.js): trust aggregation, notifications, media upload signing, calendar sync webhooks, scheduled jobs
   - Storage: intro media uploads (video/voice), encrypted blobs if needed
 - AI Match Service (Python, FastAPI on Cloud Run)
   - Endpoint: computeMatches, logFeedback

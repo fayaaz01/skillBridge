@@ -6,7 +6,7 @@ A privacy-first, agentic AI platform enabling university students to exchange ac
 - User authentication with student verification and optional 2FA
 - Skill offers/requests with availability, language, and urgency
 - AI matchmaking engine with agentic proactive suggestions
-- Secure in-app chat (text + voice notes), scheduling, and calendar integration
+- Secure in-app chat (text + voice notes), scheduling, and calendar integration (device calendar + Google Calendar)
 - Trust and reputation with ratings and badges
 - Offline sync for posting, browsing, and messaging
 - Multilingual UI (English/Tamil/Hindi/Arabic)
@@ -18,7 +18,7 @@ A privacy-first, agentic AI platform enabling university students to exchange ac
 - AI Matching: Python (FastAPI service) + scikit-learn or TensorFlow, optionally TF Lite on-device
 - Messaging: Firestore collections with client-side E2EE
 - Location: Google Maps SDK
-- Calendar: Platform Calendar APIs (iOS/Android) or Google Calendar API
+- Calendar: Platform Calendar APIs (iOS/Android) and Google Calendar API (OAuth)
 
 ### High-Level Architecture
 - Mobile app communicates with Firebase (Auth + Firestore). Firestore provides offline cache and sync.

@@ -45,6 +45,14 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 - PATCH `/events/{id}` → confirm/cancel
 - GET `/events?convoId=...`
 
+### Calendar Integrations
+- Device calendar: handled client-side via Expo Calendar APIs (no server endpoints)
+- Google Calendar (OAuth):
+  - POST `/calendar/google/connect` → initiates OAuth; returns URL
+  - GET `/calendar/google/callback` → exchanges code for tokens (server-side)
+  - POST `/calendar/google/disconnect` → revokes tokens
+  - POST `/calendar/google/syncEvent` → { eventId } mirrors event to Google Calendar
+
 ### AI Match Service (Python, private)
 - POST `/computeMatches`
   - Input: { requesterFeatures, candidatePool[], k, context }

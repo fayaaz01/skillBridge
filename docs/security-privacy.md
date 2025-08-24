@@ -35,4 +35,5 @@
 ### Compliance
 - Consent for notifications and analytics; opt-out defaults where possible
 - Local language notifications (English/Tamil/Hindi/Arabic)
+ - Google OAuth: store access/refresh tokens encrypted server-side; scope-limited to Calendar events
 
