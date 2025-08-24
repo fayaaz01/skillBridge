@@ -11,7 +11,7 @@
 ### 2. Skill Profile (Offer/Request)
 - Header: category, type chip (Offer/Request), owner pseudonym + trust band
 - Body: description, skills chips, availability, language, location area (coarse)
-- Actions: Start Chat, Save, Report, Share (deep link)
+- Actions: Start Chat, Request Intro (video/voice), Save, Report, Share (deep link)
 
 ### 3. Match Results
 - Ranked list with rationale snippets
@@ -22,6 +22,7 @@
 - E2EE indicator, participant pseudonym, related listing chips
 - Text input, voice note button, attachment
 - Scheduling proposal chip appears when time is discussed
+ - If intro requested: show pending/approved status chip; play intro if approved
 
 ### 5. Rating & Badges
 - Mandatory: 5-star + at least one tag + comment (min 10 chars)

@@ -24,6 +24,7 @@
 - Pseudonymous profiles; real names optional
 - User can delete account: cascade delete personal data where feasible
  - Location: precise GPS stored; shown only as approximate area to other users
+ - Intros: viewable only after explicit consent approval; access is logged
 
 ### Access Controls
 - Firestore rules: least privilege, role checks via custom claims

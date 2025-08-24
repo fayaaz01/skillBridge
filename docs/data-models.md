@@ -11,6 +11,7 @@ Notation: `?` optional, `[]` array, `RO` read-only (server-set).
 - `ratings/{ratingId}`: post-exchange feedback
 - `endorsements/{endorsementId}`: peer endorsements
 - `intros/{introId}`: user video/voice introductions
+ - `introRequests/{requestId}`: consent workflow for viewing intro
 - `events/{eventId}`: scheduled sessions
 - `profiles/{userId}/keys`: Signal prekey bundle (public)
 
@@ -175,6 +176,19 @@ intros: {
 }
 ```
 
+### introRequests
+```
+introRequests: {
+  requestId: string (RO),
+  requesterId: string,
+  targetUserId: string,
+  type: "video" | "audio",
+  status: "pending" | "approved" | "declined" | "expired",
+  createdAt: Timestamp (RO),
+  actedAt?: Timestamp
+}
+```
+
 ### events (Scheduling)
 ```
 events: {
@@ -199,6 +213,7 @@ events: {
 - Ratings: rater can write, ratee cannot modify; aggregate trust updated via Function
 - Endorsements: endorser can create; endorsee can view; others limited
 - Intros: owner can read/write; readable to matched users if `visibility == "matches"`
+ - IntroRequests: readable by requester and target only
 - Keys: `profiles/{userId}/keys` readable to authenticated users; writeable only by owner (and rotation function)
 
 ## Indexing Suggestions

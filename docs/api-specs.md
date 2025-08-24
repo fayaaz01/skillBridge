@@ -33,6 +33,12 @@ Transport: HTTPS + Firebase Auth bearer ID token. Where possible, Cloud Function
 - POST `/media:startUpload` → { purpose: "chat"|"intro", mimeType } → { uploadUrl, storagePath }
 - POST `/media:confirm` → { storagePath, durationSec? } → finalize; returns mediaRef
 
+### Intro Requests (Consent Flow)
+- POST `/intros/request` → { targetUserId, type: "video"|"audio" }
+- POST `/intros/{requestId}:approve`
+- POST `/intros/{requestId}:decline`
+- GET `/intros/requests?me=1&status=pending` → list incoming/outgoing
+
 ### E2EE Keys (Signal)
 - POST `/e2ee/registerBundle` → { identityKeyPub, signedPreKeyPub, signedPreKeySig, oneTimePreKeys[] }
 - POST `/e2ee/rotatePrekeys` → { signedPreKeyPub, signedPreKeySig, oneTimePreKeys[] }
