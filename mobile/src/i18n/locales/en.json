@@ -13,4 +13,6 @@
   "privacy.tldrTitle": "Privacy (Quick Summary)",
   "privacy.tldr": "We collect only what’s needed (account, GPS for matching, your short profile, trust signals). Messages are end‑to‑end encrypted. Real name/photo are hidden by default. Intros require consent. No data sales or ad tracking. You control settings and can delete your data.",
   "privacy.readFull": "Read full Privacy Policy"
+  ,
+  "warning.noBackend": "Running without backend credentials. Network features (AI, chat) are disabled."
 }
