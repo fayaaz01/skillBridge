@@ -1,5 +1,9 @@
 ## UX Flows and Wireframe Descriptions
 
+### 0. Onboarding (First-run)
+- Blocking language picker: English / Tamil / Hindi / Arabic
+- Secondary screen: consent for notifications and calendar access (optional)
+
 ### 1. Home Dashboard (Skill Feed)
 - Sections: For You (agentic), New Nearby, Urgent Now
 - Card shows: title, category badge, language, trust band, availability snippet, CTA: View / Match

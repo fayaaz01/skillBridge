@@ -34,5 +34,9 @@ Tamil/Hindi/Arabic translations mirror keys in `ta.json`, `hi.json`, and `ar.jso
 
 ### Runtime Toggle
 - Provide Settings toggle with these options: English, Tamil, Hindi, Arabic
-- Persist choice in secure storage and Redux Persist; default to device language
+- Persist choice in secure storage and Redux Persist
+
+### First-run Language Picker
+- On first launch, present a blocking modal to choose language (EN/TA/HI/AR)
+- Store selection immediately and reinitialize i18n + RTL if Arabic
 
