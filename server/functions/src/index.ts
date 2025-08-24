@@ -5,6 +5,7 @@ import cors from 'cors';
 
 admin.initializeApp();
 const db = admin.firestore();
+const AI_URL = process.env.AI_URL || 'http://localhost:8000';
 
 const app = express();
 app.use(cors({ origin: true }));
@@ -72,3 +73,34 @@ app.post('/profile/updateLocation', requireAuth, async (req, res) => {
 });
 
 export const api = functions.region('us-central1').https.onRequest(app);
+
+// -------- AI wiring routes --------
+app.post('/matches:compute', requireAuth, async (req, res) => {
+  try {
+    const resp = await fetch(`${AI_URL}/computeMatches`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body || {})
+    });
+    const data = await resp.json();
+    if (!resp.ok) return res.status(resp.status).json(data);
+    return res.json(data);
+  } catch (e: any) {
+    return res.status(502).json({ error: { code: 'ai-service-unavailable', message: String(e?.message || e) } });
+  }
+});
+
+app.post('/ai/feedback', requireAuth, async (req, res) => {
+  try {
+    const resp = await fetch(`${AI_URL}/feedback`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body || {})
+    });
+    const data = await resp.json();
+    if (!resp.ok) return res.status(resp.status).json(data);
+    return res.json(data);
+  } catch (e: any) {
+    return res.status(502).json({ error: { code: 'ai-service-unavailable', message: String(e?.message || e) } });
+  }
+});
