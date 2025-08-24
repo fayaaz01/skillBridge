@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import './src/i18n';
 import { useTranslation } from 'react-i18next';
 import { darkTheme, lightTheme } from './src/theme/colors';
+import { isBackendReady } from './src/config';
 
 type Step = 'language' | 'gps' | 'summary' | 'privacy' | 'done';
 
@@ -19,11 +20,13 @@ export default function App() {
   const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
-      <View style={{ paddingHorizontal: 20, paddingTop: 12 }}>
-        <Text style={{ backgroundColor: colors.surface, color: colors.textMuted, padding: 10, borderRadius: 8, borderColor: colors.border, borderWidth: 1 }}>
-          {t('warning.noBackend')}
-        </Text>
-      </View>
+      {!isBackendReady() && (
+        <View style={{ paddingHorizontal: 20, paddingTop: 12 }}>
+          <Text style={{ backgroundColor: colors.surface, color: colors.textMuted, padding: 10, borderRadius: 8, borderColor: colors.border, borderWidth: 1 }}>
+            {t('warning.noBackend')}
+          </Text>
+        </View>
+      )}
       <View style={{ flex: 1, padding: 20, gap: 16 }}>{children}</View>
     </SafeAreaView>
   );

@@ -23,6 +23,9 @@
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "apiBaseUrl": "http://127.0.0.1:5001/skillbridge-f1b43/us-central1/api"
     }
   }
 }
