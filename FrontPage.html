@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Skills Barter System MVP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="header-bar">
+        <h1>Student Skills Barter System</h1>
+    </div>
+    <p>Innovation: **Zero-Cost Skill Exchange** (Node.js Serverless MVP)</p>
+    
+    <div class="profile-card">
+        <h2>Your Profile: Fayaaz Muhammed</h2>
+        <p><strong>Skills You Offer:</strong> Digital Portfolio Creation, Graphic Design</p>
+        <p><strong>Skills You Need:</strong> <span style="color: #dc3545;">Career Path Navigation</span></p>
+        <p><strong>Current Trust Score:</strong> 100 ⭐️</p>
+    </div>
+
+    <h3>Find Your Perfect Peer Match:</h3>
+    <button onclick="findMatch()">Find Reciprocal Match (via AWS Lambda)</button>
+    <div id="result"></div>
+
+    <script>
+    // CRITICAL: The API URL for your deployed API Gateway endpoint
+    const API_URL = 'https://kzb79iydrd.execute-api.us-east-1.amazonaws.com/prod/match'; 
+
+    async function findMatch() {
+        document.getElementById('result').innerHTML = '<p>Searching for a reciprocal match...</p>';
+        try {
+            
+            // CORRECT FETCH: Sends request to your API Gateway
+            const response = await fetch(API_URL); 
+            
+            // CORRECT JSON PARSING: Parses the response body
+            const data = await response.json(); 
+            
+            // Handle HTTP errors (Backend may be down or API Gateway misconfigured)
+            if (response.status !== 200) {
+                 document.getElementById('result').innerHTML = `<p class="error-message">API Error (${response.status}): Could not connect to backend. Check Lambda logs.</p>`;
+                 return;
+            }
+            
+            // Display the successful match data
+            if (data.match && data.match.Username) {
+                document.getElementById('result').innerHTML = `
+                    <div class="match-card">
+                        <h4>🎉 SUCCESS! PERFECT BARTER FOUND! 🎉</h4>
+                        <p><strong>Match Found:</strong> ${data.match.Username}</p>
+                        <p><strong>They Offer You Need:</strong> <span>${data.match.Offers.join(', ')}</span></p>
+                        <p><strong>You Offer They Need:</strong> Digital Portfolio Creation</p>
+                        <p><strong>Match Trust Score:</strong> ${data.match.TrustScore} ⭐️</p>
+                        <p><em>Demonstrates core P2P exchange logic on AWS Serverless Stack.</em></p>
+                    </div>
+                `;
+            } else {
+                // Handle a response where the backend worked but found no match
+                document.getElementById('result').innerHTML = '<p style="color: orange;">No immediate match found. Try again soon!</p>';
+            }
+
+        } catch (error) {
+            // Handle network or CORS errors
+            document.getElementById('result').innerHTML = '<p class="error-message">Connection Failed. Check CORS settings or Lambda logs.</p>';
+            console.error('API Connection Error:', error);
+        }
+    }
+    </script>
+</body>
+</html>

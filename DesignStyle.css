@@ -1,0 +1,88 @@
+/* -------------------------------------------
+ * style.css: Attractive, modern, and professional styles 
+ * for the Student Skills Barter System MVP.
+ * ------------------------------------------- */
+
+/* Global Body and Font Settings */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    padding: 30px; 
+    background-color: #e9ecef; /* Light gray-blue background */
+    color: #212529; /* Dark text for contrast */
+    line-height: 1.6;
+}
+
+/* Header and Branding */
+.header-bar { 
+    border-bottom: 5px solid #007bff; /* Primary Brand Blue */
+    padding-bottom: 15px; 
+    margin-bottom: 30px; 
+}
+h1 { 
+    color: #007bff; /* Primary Brand Blue */
+    font-weight: 800; 
+    margin-top: 0; 
+    font-size: 2.2rem;
+}
+p {
+    font-size: 1.05rem;
+}
+
+/* User Profile Card */
+.profile-card { 
+    border: 1px solid #ced4da; /* Subtle border */
+    padding: 25px; 
+    margin-bottom: 35px; 
+    background-color: #ffffff; 
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Soft, noticeable shadow */
+}
+.profile-card h2 {
+    color: #495057;
+    border-bottom: 2px dashed #e9ecef;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+.profile-card strong {
+    color: #007bff;
+}
+
+/* Match Button */
+button { 
+    padding: 14px 30px; 
+    font-size: 1.1rem; 
+    background-color: #28a745; /* Success Green */
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.1s; 
+    font-weight: 600;
+}
+button:hover { 
+    background-color: #1e7e34; /* Darker Green on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+}
+
+/* Match Result Card (Success Display) */
+.match-card { 
+    border: 4px solid #28a745; /* Bright Green Border */
+    padding: 30px; 
+    margin-top: 30px; 
+    background-color: #f1f8f3; /* Very light green background */
+    border-radius: 12px; 
+    box-shadow: 0 8px 15px rgba(40,167,69,0.25); /* Strong shadow for success */
+}
+.match-card h4 { 
+    color: #28a745; 
+    margin-top: 0; 
+    font-size: 1.5rem;
+}
+.match-card span {
+    font-weight: bold;
+    color: #1e7e34;
+}
+
+/* Error Message Styling */
+.error-message { 
+    color: #dc3545; /*
