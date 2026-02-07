@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "source": "server/functions",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "lib/**/.map"
+    ]
+  },
+  "firestore": {
+    "rules": "server/firestore.rules",
+    "indexes": "server/firestore.indexes.json"
+  }
+}

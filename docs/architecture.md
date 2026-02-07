@@ -1,0 +1,52 @@
+## Architecture
+
+### Goals
+- Mobile-first, offline-capable, privacy-centric
+- Agentic AI suggestions with minimal PII exposure
+- Simple ops: managed backend (Firebase) + small Python service
+
+### Components
+- Mobile App (React Native, Expo)
+  - Screens: Dashboard, Listing, Matches, Chat, Scheduling, Ratings, Settings
+  - State: Redux Toolkit with Persist; encrypted storage for keys
+  - i18n: i18next (English/Tamil/Hindi/Arabic)
+  - Calendar: device calendar access (permissions) and optional Google OAuth for Calendar
+  - Location: mandatory GPS permission; geohash computed client-side for queries
+- Firebase
+  - Auth: Email/password; optional phone OTP and TOTP 2FA
+  - Firestore: Profiles, Listings, Matches, Messages, Ratings, Endorsements, Intros
+  - Cloud Functions (Node.js): trust aggregation, notifications, media upload signing, calendar sync webhooks, scheduled jobs
+  - Storage: intro media uploads (video/voice), encrypted blobs if needed
+- AI Match Service (Python, FastAPI on Cloud Run)
+  - Endpoint: computeMatches, logFeedback
+  - Inputs: anonymized skills, categories, precise location (lat/lng → distance), availability, urgency, trust score
+  - Outputs: ranked user/listing IDs with relevance and rationale
+  - Learning: bandit feedback from accept/decline/rate
+
+### Data Flow
+1. User signs in → Firebase Auth issues ID token
+2. App reads/writes to Firestore; messages are encrypted client-side
+3. Optional trust enrichment: user adds intro and receives peer endorsements; trust metrics update
+4. App requests matches → Cloud Function proxies to AI service with de-identified features
+5. AI service returns ranked candidates; app stores suggestions and notifies user
+
+### Encryption Model
+- Messaging: Signal protocol (X3DH + Double Ratchet) via libsignal compatible library
+- Keys: per-user identity keypair; signed prekey + one-time prekeys published as a bundle
+- Key distribution: public prekey bundle stored at `profiles/{userId}/keys`
+- Storage: ciphertext in `messages` collection; metadata minimized (senderId, convoId, timestamp)
+
+### Offline Strategy
+- Firestore local persistence for cache and writes queue
+- Redux Persist for UI state and drafts
+- Conflict policy: last-write-wins on simple fields; server-side merge for arrays; idempotent upserts
+
+### Observability
+- Client: minimal analytics; local-only telemetry by default
+- Server: Cloud Logging for Functions and AI service; privacy filters
+
+### Non-Goals (v0)
+- Public profile discovery
+- Payments or credits
+- Web app parity
+
